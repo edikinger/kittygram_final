@@ -35,7 +35,6 @@ jobs:
     # Тесты для бэкенда
   backend/frontend tests:
     runs-on: ubuntu-latest
-    needs: backend-lint
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
