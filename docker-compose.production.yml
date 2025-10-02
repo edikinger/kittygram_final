@@ -12,7 +12,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    build: ./backend/
+    image: edikinger/kittygram_backend
     env_file: .env
     volumes:
       - static:/backend_static
@@ -21,14 +21,14 @@ services:
       - db
   frontend:
     env_file: .env
-    build: ./frontend/
+    image: edikinger/kittygram_frontend
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
   gateway:
-    build: ./nginx/
+    image: edikinger/kittygram_gateway
     volumes:
       - static:/staticfiles
       - media:/mediafiles/
     ports:
-      - 8000:80 
+      - 9000:80 
