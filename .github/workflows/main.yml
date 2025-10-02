@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  flake8/local_tests:
+  flake8_and_local_tests:
     runs-on: ubuntu-latest
 
     steps:
