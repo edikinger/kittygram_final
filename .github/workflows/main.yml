@@ -33,7 +33,7 @@ jobs:
       run: python -m flake8 backend/
 
     # Тесты для бэкенда
-  backend/frontend tests:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
