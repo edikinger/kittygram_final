@@ -9,7 +9,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        python-version: [ '3.9', '3.10']
+        python-version: ['3.9', '3.10']
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -55,7 +55,7 @@ jobs:
     name: Push Docker image to DockerHub
     runs-on: ubuntu-latest
     needs: tests
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
