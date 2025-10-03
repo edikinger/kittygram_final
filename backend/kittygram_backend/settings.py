@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 USE_DEBUG_MODE = os.getenv(
-    'USE_DEBUG_MODE', 'true'
+    'USE_DEBUG_MODE', 'false'
 ).lower() in ['true', '1', 'y', 'yes']
 
 BASE_DIR = Path(__file__).resolve().parent.parent
