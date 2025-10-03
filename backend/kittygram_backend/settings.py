@@ -11,7 +11,7 @@ USE_DEBUG_MODE = os.getenv(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 DEBUG = USE_DEBUG_MODE
 
