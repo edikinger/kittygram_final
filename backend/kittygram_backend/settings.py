@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-USE_DEBUG_MODE = os.getenv('USE_DEBUG_MODE', 'true').lower() in ['true', '1', 'y', 'yes']
+USE_DEBUG_MODE = os.getenv(
+    'USE_DEBUG_MODE', 'true'
+).lower() in ['true', '1', 'y', 'yes']
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +22,10 @@ if USE_DEBUG_MODE:
 else:
     allowed_hosts_str = os.getenv('ALLOWED_HOSTS', '').strip("'")
     ALLOWED_HOSTS = [
-    host.strip()
-    for host in allowed_hosts_str.split(',')
-    if host.strip()
-]
+        host.strip()
+        for host in allowed_hosts_str.split(',')
+        if host.strip()
+    ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
