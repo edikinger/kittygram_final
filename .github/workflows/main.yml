@@ -35,10 +35,10 @@ jobs:
         POSTGRES_USER: django_user
         POSTGRES_PASSWORD: django_password
         POSTGRES_DB: django_db
-        DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         DB_HOST: 127.0.0.1
         DB_PORT: 5432
       run: |
+        echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> backend/.env
         python -m pip install --upgrade pip setuptools
         pip install flake8==6.0.0 flake8-isort==6.0.0
         pip install -r ./backend/requirements.txt
