@@ -12,8 +12,6 @@ USE_DEBUG_MODE = os.getenv(
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-if not SECRET_KEY:
-    raise ValueError("SECRET_KEY не может быть пустым")
 
 DEBUG = USE_DEBUG_MODE
 
