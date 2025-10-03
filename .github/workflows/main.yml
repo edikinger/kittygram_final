@@ -39,7 +39,6 @@ jobs:
         DB_HOST: 127.0.0.1
         DB_PORT: 5432
       run: |
-        echo "SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> $GITHUB_ENV
         python -m pip install --upgrade pip setuptools
         pip install flake8==6.0.0 flake8-isort==6.0.0
         pip install -r ./backend/requirements.txt
