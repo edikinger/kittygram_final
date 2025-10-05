@@ -183,6 +183,9 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
          Деплой успешно выполнен!
-         Деплой в ветку (github.ref_name) сделал: (github.actor).
-         Cообщение коммита: (github.event.commits[0].message).
+         Ветка: ${{ github.ref_name }} 
+         Выполнил: ${{ github.actor }}
+
+         Cообщение коммита: ${{ github.event.commits[0].message }}
+         
          Ссылка на коммит: https://github.com/${{ github.repository }}/commit/${{github.sha}}
