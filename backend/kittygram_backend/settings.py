@@ -19,7 +19,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'somekey')
 
 DEBUG = USE_DEBUG_MODE
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS',default='').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,7 +65,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
 if USE_POSTGRES:
-        DATABASES = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('POSTGRES_DB', 'django'),
@@ -76,7 +76,7 @@ if USE_POSTGRES:
         }
     }
 else:
-        DATABASES = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3'
