@@ -9,22 +9,17 @@ USE_DEBUG_MODE = os.getenv(
     'USE_DEBUG_MODE', 'false'
 ).lower() in ['true', '1', 'y', 'yes']
 
+USE_POSTGRES = os.getenv(
+    'USE_POSTGRES', 'true'
+).lower() in ['true', '1', 'y', 'yes']
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'somekey')
 
 DEBUG = USE_DEBUG_MODE
 
-
-if USE_DEBUG_MODE:
-    ALLOWED_HOSTS = ['*']
-else:
-    allowed_hosts_str = os.getenv('ALLOWED_HOSTS', '').strip("'")
-    ALLOWED_HOSTS = [
-        host.strip()
-        for host in allowed_hosts_str.split(',')
-        if host.strip()
-    ]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS',default='').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,15 +64,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
-if USE_DEBUG_MODE:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3'
-        }
-    }
-else:
-    DATABASES = {
+if USE_POSTGRES:
+        DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv('POSTGRES_DB', 'django'),
@@ -87,6 +75,14 @@ else:
             'PORT': os.getenv('DB_PORT', 5432)
         }
     }
+else:
+        DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
+        }
+    }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
